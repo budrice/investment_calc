@@ -27,7 +27,6 @@ export class CalculatorService {
         totalAmountInvested: data.initialInvestment + data.annualInvestment * year,
       });
     }
-
     return annualData;
   }
 }
