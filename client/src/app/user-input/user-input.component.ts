@@ -10,10 +10,10 @@ import { FormsModule } from '@angular/forms';
 })
 export class UserInputComponent {
 
-  initialInvestmentAmount?: number;
-  annualInvestmentAmount?: number;
-  expectedReturnRate?: number;
-  duration?: number;
+  initialInvestmentAmount = 0;
+  annualInvestmentAmount = 0;
+  expectedReturnRate = 5;
+  duration = 10;
 
   onSubmit() {
     console.log(this.initialInvestmentAmount);
