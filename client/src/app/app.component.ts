@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { InvestmentResultsComponent } from './investment-results/investment-results.component';
 import { UserInputComponent } from './user-input/user-input.component';
+import { CalculatorService } from './calculator.service';
+import { type CalculatorInput, type CalculatorResult } from './calculator.model';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +19,14 @@ import { UserInputComponent } from './user-input/user-input.component';
   ],
 })
 export class AppComponent {
-  getCalculation(data: { initialInvestment: number, annualInvestment: number, expectedReturn: number, duration: number }) {
-    console.log(data);
+  private calculatorService = inject(CalculatorService);
+  results = signal<CalculatorResult[] | undefined>(undefined);
+
+  onCalculate(data: CalculatorInput) {
+    this.calculatorService
+      .calculateInvestmentResults(data)
+      .then((results: CalculatorResult[]) => {
+        this.results.set(results);
+      });
   }
 }

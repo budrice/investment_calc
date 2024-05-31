@@ -1,20 +1,29 @@
-<table>
-   <thead>
+@if (results()) {
+  <table>
+    <thead>
       <tr>
-         <th>col1</th>
-         <th>col2</th>
-         <th>col3</th>
-         <th>col4</th>
-         <th>col5</th>
+        <th>year</th>
+        <th>annualInvestment</th>
+        <th>interest</th>
+        <th>totalInterest</th>
+        <th>totalAmountInvested</th>
+        <th>valueEndOfYear</th>
       </tr>
-   </thead>
-   <tbody>
+    </thead>
+    <tbody>
+      @for (result of results(); track result) {
       <tr>
-         <td>1</td>
-         <td>2</td>
-         <td>3</td>
-         <td>4</td>
-         <td>5</td>
+        <td>{{ result.year }}</td>
+        <td>{{ result.annualInvestment | currency }}</td>
+        <td>{{ result.interest | currency }}</td>
+        <td>{{ result.totalInterest | currency }}</td>
+        <td>{{ result.totalAmountInvested | currency }}</td>
+        <td>{{ result.valueEndOfYear | currency }}</td>
       </tr>
-   </tbody>
-</table>
+      }
+    </tbody>
+  </table>
+} @else {
+  <p style="text-align: center;">Please enter some values and press "CALCULATE".</p>
+}
+
