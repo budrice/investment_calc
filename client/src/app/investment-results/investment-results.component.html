@@ -1,29 +1,32 @@
 @if (results()) {
-  <table>
-    <thead>
-      <tr>
-        <th>year</th>
-        <th>annualInvestment</th>
-        <th>interest</th>
-        <th>totalInterest</th>
-        <th>totalAmountInvested</th>
-        <th>valueEndOfYear</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (result of results(); track result) {
-      <tr>
-        <td>{{ result.year }}</td>
-        <td>{{ result.annualInvestment | currency }}</td>
-        <td>{{ result.interest | currency }}</td>
-        <td>{{ result.totalInterest | currency }}</td>
-        <td>{{ result.totalAmountInvested | currency }}</td>
-        <td>{{ result.valueEndOfYear | currency }}</td>
-      </tr>
-      }
-    </tbody>
-  </table>
+<table>
+  <thead>
+    <tr>
+      <th>year</th>
+      <th>annualInvestment</th>
+      <th>interest</th>
+      <th>totalInterest</th>
+      <th>totalAmountInvested</th>
+      <th>valueEndOfYear</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (result of results(); track result) {
+    <tr>
+      <td>
+        <strong>{{ year + result.year }}</strong>
+      </td>
+      <td>{{ result.annualInvestment | currency }}</td>
+      <td>{{ result.interest | currency }}</td>
+      <td>{{ result.totalInterest | currency }}</td>
+      <td>{{ result.totalAmountInvested | currency }}</td>
+      <td>{{ result.valueEndOfYear | currency }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
 } @else {
-  <p style="text-align: center;">Please enter some values and press "CALCULATE".</p>
+<p style="text-align: center; font-weight: 900;">
+  Please enter some values and press "CALCULATE".
+</p>
 }
-

@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 
 import { type CalculatorResult } from '../calculator.model';
@@ -11,6 +11,6 @@ import { type CalculatorResult } from '../calculator.model';
   styleUrl: './investment-results.component.css'
 })
 export class InvestmentResultsComponent {
-  // @Input() results?: CalculatorResult[];
   results = input<CalculatorResult[]>();
+  year = new Date().getFullYear();
 }
