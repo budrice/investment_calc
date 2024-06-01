@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 
 import { type CalculatorResult } from '../calculator.model';
@@ -13,8 +13,6 @@ import { CalculatorService } from '../calculator.service';
 })
 export class InvestmentResultsComponent {
   private calculatorService = inject(CalculatorService);
-  get results() {
-    return this.calculatorService.results;
-  }
+  results = computed(() => this.calculatorService.results());
   year = new Date().getFullYear();
 }
