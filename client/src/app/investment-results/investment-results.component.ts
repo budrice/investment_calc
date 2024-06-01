@@ -13,6 +13,8 @@ import { CalculatorService } from '../calculator.service';
 })
 export class InvestmentResultsComponent {
   private calculatorService = inject(CalculatorService);
-  results = this.calculatorService.results;
+  get results() {
+    return this.calculatorService.results;
+  }
   year = new Date().getFullYear();
 }

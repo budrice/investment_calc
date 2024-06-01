@@ -1,6 +1,6 @@
-import { Component, output, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { type CalculatorInput } from '../calculator.model';
+import { CalculatorService } from '../calculator.service';
 
 @Component({
   selector: 'app-user-input',
@@ -10,7 +10,7 @@ import { type CalculatorInput } from '../calculator.model';
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
-  calculate = output<CalculatorInput>();
+  private calculatorService = inject(CalculatorService);
   initialInvestment = signal('0');
   annualInvestment = signal('0');
   expectedReturn = signal('5');
@@ -22,7 +22,7 @@ export class UserInputComponent {
     const expectedReturn = +this.expectedReturn();
     const duration = +this.duration();
 
-    this.calculate.emit({
+    this.calculatorService.calculateInvestmentResults({
       initialInvestment,
       annualInvestment,
       expectedReturn,
