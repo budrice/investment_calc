@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { type CalculatorInput } from './calculator.model';
+import { Injectable, signal } from '@angular/core';
+import { CalculatorResult, type CalculatorInput } from './calculator.model';
 
 @Injectable({ providedIn: 'root' })
 export class CalculatorService {
+  results = signal<CalculatorResult[] | undefined>(undefined);
 
   calculateInvestmentResults(data: CalculatorInput) {
     const annualData = [];
@@ -22,6 +23,6 @@ export class CalculatorService {
         totalAmountInvested: data.initialInvestment + data.annualInvestment * year,
       });
     }
-    return Promise.resolve(annualData);
+    this.results.set(annualData);
   }
 }

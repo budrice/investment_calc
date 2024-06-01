@@ -23,10 +23,6 @@ export class AppComponent {
   results = signal<CalculatorResult[] | undefined>(undefined);
 
   onCalculate(data: CalculatorInput) {
-    this.calculatorService
-      .calculateInvestmentResults(data)
-      .then((results: CalculatorResult[]) => {
-        this.results.set(results);
-      });
+    this.calculatorService.calculateInvestmentResults(data);
   }
 }
