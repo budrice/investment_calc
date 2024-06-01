@@ -1,7 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 
-import { type CalculatorResult } from '../calculator.model';
 import { CalculatorService } from '../calculator.service';
 
 @Component({
